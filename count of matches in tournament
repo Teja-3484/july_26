@@ -9,3 +9,7 @@ class Solution:
                 c+=(n-1)//2+1
                 n=(n-1)//2
         return c
+#optimized
+class Solution:
+    def numberOfMatches(self, n: int) -> int:
+        return n-1
