@@ -1,0 +1,38 @@
+class Solution:
+    def nearestPalindromic(self, n: str) -> str:
+        num = int(n)
+        l = len(n)
+
+        s = set()
+
+        # Edge cases
+        s.add(10 ** (l - 1) - 1)
+        s.add(10 ** l + 1)
+
+        prefix = int(n[:(l + 1) // 2])
+
+        # Generate palindrome candidates
+        for i in [prefix - 1, prefix, prefix + 1]:
+            p = str(i)
+
+            if l % 2 == 0:
+                pal = int(p + p[::-1])
+            else:
+                pal = int(p + p[:-1][::-1])
+
+            s.add(pal)
+
+        # Remove original number if present
+        s.discard(num)
+
+        ans = -1
+
+        for i in s:
+            if ans == -1:
+                ans = i
+            elif abs(i - num) < abs(ans - num):
+                ans = i
+            elif abs(i - num) == abs(ans - num) and i < ans:
+                ans = i
+
+        return str(ans)
