@@ -1,0 +1,19 @@
+class Solution:
+    def sequentialDigits(self, low: int, high: int) -> List[int]:
+        ans = []
+
+        s = "123456789"
+
+        c1 = len(str(low))
+        c2 = len(str(high))
+
+        for i in range(c1, c2 + 1):
+
+            for j in range(0, 10 - i):
+
+                num = int(s[j:j+i])
+
+                if low <= num <= high:
+                    ans.append(num)
+
+        return ans
