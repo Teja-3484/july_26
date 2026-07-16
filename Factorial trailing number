@@ -1,0 +1,30 @@
+#brute force[cause tle]
+class Solution:
+    def trailingZeroes(self, n: int) -> int:
+        c = 0
+        fact = 1
+
+        for i in range(n, 0, -1):
+            fact *= i
+
+        while fact > 0:
+            temp = fact % 10
+
+            if temp == 0:
+                c += 1
+            else:
+                break
+
+            fact //= 10
+
+        return c
+# overcome tle
+class Solution:
+    def trailingZeroes(self, n: int) -> int:
+        c = 0
+
+        while n > 0:
+            n //= 5
+            c += n
+
+        return c
