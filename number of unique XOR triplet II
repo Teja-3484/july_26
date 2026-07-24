@@ -1,0 +1,21 @@
+class Solution:
+    def uniqueXorTriplets(self, nums: List[int]) -> int:
+
+        if len(nums) == 1:
+            return 1
+
+        pair = set()
+        ans = set()
+
+        for i in range(len(nums)):
+            for j in range(i + 1, len(nums)):
+                pair.add(nums[i] ^ nums[j])
+
+        for i in pair:
+            for j in nums:
+                ans.add(i ^ j)
+
+        for i in nums:
+            ans.add(i)
+
+        return len(ans)
