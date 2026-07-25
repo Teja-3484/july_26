@@ -1,0 +1,9 @@
+class Solution:
+    def maxProduct(self, n: int) -> int:
+        ans = []
+        while n > 0:
+            temp = n % 10
+            ans.append(temp)
+            n //= 10
+        ans.sort()
+        return ans[-1] * ans[-2]
