@@ -1,0 +1,27 @@
+class Solution:
+    def commonFactors(self, a: int, b: int) -> int:
+        a1 = []
+        b1 = []
+        c = 1
+
+        for i in range(2,a + 1):
+            if a % i == 0:
+                a1.append(i)
+
+        for i in range(2,b + 1):
+            if b % i == 0:
+                b1.append(i) 
+
+        k = len(a1)
+        m = len(b1)
+
+        if k > m:
+            for i in range(k):
+                if a1[i] in b1:
+                    c += 1
+        else:
+            for i in range(m):
+                if b1[i] in a1:
+                    c += 1
+        
+        return c
