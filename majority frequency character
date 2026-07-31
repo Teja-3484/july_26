@@ -1,0 +1,37 @@
+class Solution:
+    def majorityFrequencyGroup(self, s: str) -> str:
+
+        d = {}
+
+        for i in s:
+            if i in d:
+                d[i] += 1
+            else:
+                d[i] = 1
+
+        freq = {}
+
+        for i in d:
+            if d[i] in freq:
+                freq[d[i]] += 1
+            else:
+                freq[d[i]] = 1
+
+        m = 0
+        k = 0
+
+        for i in freq:
+            if freq[i] > m:
+                m = freq[i]
+                k = i
+            elif freq[i] == m:
+                if i > k:
+                    k = i
+
+        ans = ""
+
+        for i in d:
+            if d[i] == k:
+                ans += i
+
+        return "".join(sorted(ans))
